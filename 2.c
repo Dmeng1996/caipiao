@@ -10,7 +10,7 @@ char user_name[19];//最大18位
 char password[13];//最大13位
 char like[255];
 char sign[255];
-};
+}boya[1],*pp;
 
 /*
 * 验证用户名长度是否合法
