@@ -3,6 +3,7 @@
 #include<string.h>
 #include<ctype.h>
 #define N 100
+
 struct user
 {
 int user_id;
@@ -124,16 +125,18 @@ if(size==N)
    puts("注册人数以满!");
    return 0;
 }
-printf("请输入注册姓名:");
+int caipiaoid;
+printf("请输入彩票id:");
+scanf("%d",&caipiaoid);
 fflush(stdin);
 gets(ptr_user[size].user_name);
-if(!(length_user_name(ptr_user[size].user_name)&&valid_user_name(ptr_user[size].user_name)))
+if(caipiaoid < 0 ||caipiaoid >= 10)
 {
-   printf("您输入的姓名无效,用户名在1-18之间,首字符为字母,后面必须为字母,数字或下划线!!!");
+   printf("您输入的彩票id无效!!!");
    return 0;
 }
 
-printf("请输入注册密码:");
+/*printf("请输入注册密码:");
 fflush(stdin);
 gets(password);
 printf("请再次输入注册密码:");
@@ -161,7 +164,7 @@ gets(ptr_user[size].like);
 printf("请输入您的个性签名:");
 fflush(stdin);
 gets(ptr_user[size].sign);
-printf("您的编号为:%d,这将是您的登陆帐号.",ptr_user[size].user_id=10000+size);
+printf("您的编号为:%d,这将是您的登陆帐号.",ptr_user[size].user_id=10000+size);*/
 return 1;
 }
 
@@ -230,9 +233,9 @@ else
 int show_menu()
 {
 int choice;
-printf("\n1.注册");
-printf("\n2.登陆");
-printf("\n3.修改密码");
+printf("\n1.购买");
+printf("\n2.查询");
+printf("\n3.修改");
 printf("\n4.退出");
 printf("\n请选择1-4\n");
 scanf("%d",&choice);
@@ -253,18 +256,18 @@ while(1)
      if(user_register(our_users,count))
      {
       count++;
-      printf("\n注册成功!");
+      printf("\n购买成功!");
      }
      break;
      //注册
     case 2:
      if((current_user = is_my_user(our_users,count)))
      {
-      printf("\n登陆成功!");
+      printf("\n查询成功!");
       display_user(our_users[current_user - 1]);
      }
      else
-      printf("\n登陆失败!");
+      printf("\n查询失败!");
       break;
      //登陆
     case 3:

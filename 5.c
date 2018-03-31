@@ -1,60 +1,44 @@
 #include <stdio.h>
 #include <string.h>
 
-void cp();
-
 int main() {
     
     FILE *file;
     
     int manid;
     char password[20];
-    
-    int id;
+    int  id;
     char fname[20];
     char lname[20];
     char pass[20];
     char cpid[20];
-    
     int c = 0;
     int d = 0;
-    
-    printf("------LOGIN PAGE-----\n");
-    
     printf("manid: ");
     scanf("%d", &manid);
-    
-    printf("Password: ");
-    scanf("%s", &password);
-    
-    
-    file = fopen("user.txt", "r");
+
+     file = fopen("user.txt", "r");
     
     // READ FILE
-    while(1) 
-    {
+    while(1) {
         
         int stop = fscanf(file, "%s %d %s %d",  &lname, &id, &pass, &cpid);
         if(stop == EOF) {
             break;
-                        }
+        }
         
         // CHECK LOGIN
-        if(id == manid) 
-        {
+        if(id == manid) {
                 c = 0;
             if(strcmp(pass, password) == 0) {
                 printf("欢迎 '%s' 登录！", &lname);
-                cp();
+                
                 d = 0;
                 break;
-            } else
-                {
+            } else {
                 d = 1;
-                }
-        } 
-        else 
-        {
+            }
+        } else {
             c = 1;
         }
 
@@ -67,19 +51,6 @@ int main() {
         printf("密码错误！");
     }
     printf("\n");
-    
-    
     return 0;
-   
-    
-}
 
-void cp(){
-
-    printf("zfsdaf ");
-    int pp;
-    scanf("%d", &pp);
-    pp=pp;
-      printf(pp);
-    return 0;
 }
